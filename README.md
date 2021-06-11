@@ -1,2 +1,8 @@
-# website
-my own website, it will contain the following features: info, learning guide, project share, etc.
+# 项目简介
+本项目由devsim开发，联系方式（qq）：1143925136  
+项目为本人的个人web项目，会搭载一些对本人而言具有一定意义的应用  
+前端：react，ant design pro  
+后端：spring boot
+
+# 项目开发进展
+__2021-06-11__ 项目初始化，前后端开发框架选择完毕
