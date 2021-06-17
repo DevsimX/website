@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Menu, Spin } from 'antd';
+import {Avatar, Button, Menu, Spin} from 'antd';
 import { history, useModel } from 'umi';
 import { stringify } from 'querystring';
 import HeaderDropdown from '../HeaderDropdown';
@@ -50,6 +50,10 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     [initialState, setInitialState],
   );
 
+  const onLoginButtonClick = function () {
+    history.push('/user/login')
+  };
+
   const loading = (
     <span className={`${styles.action} ${styles.account}`}>
       <Spin
@@ -69,7 +73,9 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   const { currentUser } = initialState;
 
   if (!currentUser || !currentUser.name) {
-    return loading;
+    return (
+      <Button className={`${styles.button}`} ghost onClick={onLoginButtonClick}>登录</Button>
+    );
   }
 
   const menuHeaderDropdown = (

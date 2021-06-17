@@ -29,9 +29,9 @@ export async function getInitialState(): Promise<{
       const currentUser = await queryCurrentUser();
       return currentUser;
     } catch (error) {
-      history.push(loginPath);
+      // history.push(loginPath);
+      return undefined;
     }
-    return undefined;
   };
   // 如果是登录页面，不执行
   if (history.location.pathname !== loginPath) {
@@ -101,8 +101,10 @@ export const request: RequestConfig = {
 };
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
+// 这里是默认布局
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
+    title: 'DEVSIM',
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
     waterMarkProps: {
@@ -110,11 +112,11 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     },
     footerRender: () => <Footer />,
     onPageChange: () => {
-      const { location } = history;
+      // const { location } = history;
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        history.push(loginPath);
-      }
+      // if (!initialState?.currentUser && location.pathname !== loginPath) {
+      //   history.push(loginPath);
+      // }
     },
     links: isDev
       ? [
